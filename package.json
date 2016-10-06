@@ -1,0 +1,62 @@
+{
+  "name": "terbit",
+  "version": "0.0.0",
+  "description": "A better `npm publish`",
+  "license": "MIT",
+  "author": "Simon Degrave <simon.degraeve@gmail.com>",
+  "repository": "github:SimonDegraeve/terbit",
+  "homepage": "https://github.com/SimonDegraeve/terbit#readme",
+  "bugs": "https://github.com/SimonDegraeve/terbit/issues",
+  "main": "lib/index.js",
+  "bin": "lib/cli.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "publish",
+    "push",
+    "version",
+    "bump",
+    "commit",
+    "saya"
+  ],
+  "scripts": {
+    "lint": "eslint src",
+    "test": "jest --config .jestrc --coverage",
+    "clean": "rimraf lib",
+    "transpile": "babel --copy-files --out-dir lib --ignore *.test.js,__*__ src",
+    "build": "npm run clean && npm run transpile",
+    "report-coverage": "codecov --file node_modules/.coverage/lcov.info",
+    "release": "lib/cli.js --changelog-preset saya"
+  },
+  "dependencies": {
+    "any-observable": "^0.2.0",
+    "conventional-changelog-cli": "^1.2.0",
+    "conventional-recommended-bump": "^0.3.0",
+    "del": "^2.2.0",
+    "execa": "^0.5.0",
+    "listr": "^0.6.1",
+    "meow": "^3.7.0",
+    "pify": "^2.3.0",
+    "read-pkg-up": "^1.0.1",
+    "req-cwd": "^1.0.1",
+    "runtime-nodent": "github:simondegraeve/runtime-nodent",
+    "rxjs": "^5.0.0-beta.9",
+    "semver": "^5.1.0",
+    "split": "^1.0.0",
+    "stream-to-observable": "^0.2.0",
+    "write-pkg": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-jest": "^16.0.0",
+    "babel-preset-saya": "*",
+    "codecov": "^1.0.1",
+    "conventional-changelog-angular": "^1.3.0",
+    "conventional-changelog-saya": "*",
+    "eslint": "^3.6.1",
+    "eslint-config-saya": "*",
+    "jest": "^16.0.1",
+    "rimraf": "^2.5.4"
+  }
+}
