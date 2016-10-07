@@ -35,7 +35,7 @@ const execa = jest.fn(() => {
   const stderrStream = new Source(stderr);
 
   return Object.assign(
-    exitCode === 0 ? Promise.resolve({ stdout, stderr }) : Promise.reject(),
+    exitCode === 0 ? Promise.resolve({ stdout, stderr }) : Promise.reject({ stdout, stderr }),
     { stdout: stdoutStream, stderr: stderrStream }
   );
 });
@@ -44,21 +44,19 @@ const execa = jest.fn(() => {
 /**
  *
  */
-execa.stdout = () => {
-  // if (!outputCache.length) throw createMissingMockOutputError();
-  const [stdout = '', /**/, exitCode = 0] = outputCache.shift() || [];
-  return exitCode === 0 ? Promise.resolve(stdout) : Promise.reject();
-};
+execa.stdout = jest.fn(() => {
+  const [stdout = '', stderr = '', exitCode = 0] = outputCache.shift() || [];
+  return exitCode === 0 ? Promise.resolve(stdout) : Promise.reject({ stdout, stderr });
+});
 
 
 /**
  *
  */
-execa.stderr = () => {
-  // if (!outputCache.length) throw createMissingMockOutputError();
-  const [/**/, stderr = '', exitCode = 0] = outputCache.shift() || [];
-  return exitCode === 0 ? Promise.resolve(stderr) : Promise.reject();
-};
+execa.stderr = jest.fn(() => {
+  const [stdout = '', stderr = '', exitCode = 0] = outputCache.shift() || [];
+  return exitCode === 0 ? Promise.resolve(stderr) : Promise.reject({ stdout, stderr });
+});
 
 
 /**
