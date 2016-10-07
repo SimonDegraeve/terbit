@@ -32,7 +32,10 @@ const cli = createCli(`
     $ np 1.0.2-beta.3 --tag=beta
 `);
 
-/* istanbul ignore next */
+
+/**
+ *
+ */
 async function runProgram() {
   try {
     const taskRunner = await getTaskRunner(cli.input[0], cli.flags);
@@ -46,7 +49,10 @@ async function runProgram() {
   }
 }
 
-/* istanbul ignore next */
+
+/**
+ *
+ */
 if (!module.parent) {
   runProgram();
 }
