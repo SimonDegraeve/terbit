@@ -1,3 +1,9 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/simondegraeve/terbit/compare/v1.0.1...v1.0.2)
+> 2016-10-08
+
+* [8e14e38](https://github.com/simondegraeve/terbit/commit/8e14e38) **Bugfix:** Force arguments to be parsed as boolean
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/simondegraeve/terbit/compare/v1.0.0...v1.0.1)
 > 2016-10-08
