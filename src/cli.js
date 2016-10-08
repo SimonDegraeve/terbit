@@ -30,7 +30,7 @@ const cli = createCli(`
     $ np patch
     $ np 1.0.2
     $ np 1.0.2-beta.3 --tag=beta
-`);
+`, { boolean: ['any-branch', 'skip-cleanup', 'skip-test'] });
 
 
 /**
