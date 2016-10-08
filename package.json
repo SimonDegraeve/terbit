@@ -47,6 +47,6 @@
   },
   "devDependencies": {
     "conventional-changelog-angular": "^1.3.0",
-    "kode": "^2.0.2"
+    "kode": "^2.1.0"
   }
 }
