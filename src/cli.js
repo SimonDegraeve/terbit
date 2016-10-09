@@ -6,7 +6,7 @@
  */
 import createCli from 'meow';
 import readPkgUp from 'read-pkg-up';
-import getTaskRunner from './index';
+import getTaskRunner from './';
 
 
 /**
@@ -41,10 +41,10 @@ async function runProgram() {
     const taskRunner = await getTaskRunner(cli.input[0], cli.flags);
     await taskRunner.run();
     const { pkg } = await readPkgUp();
-    console.log(`\n ${pkg.name} ${pkg.version} published`); // eslint-disable-line no-console
+    console.log(`\n ${pkg.name} ${pkg.version} published`);
   }
   catch (error) {
-    console.log(`\nError: ${error.message}`); // eslint-disable-line no-console
+    console.log(`\nError: ${error.message}`);
     process.exit(1);
   }
 }

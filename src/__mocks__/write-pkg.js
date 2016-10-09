@@ -1,4 +1,8 @@
 /**
  *
  */
-export default jest.fn(() => Promise.resolve());
+const writePkg = jest.genMockFromModule('write-pkg');
+
+writePkg.mockImplementation(() => Promise.resolve());
+
+export default writePkg;

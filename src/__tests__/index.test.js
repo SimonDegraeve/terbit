@@ -2,7 +2,7 @@
  *
  */
 import TaskList from 'listr';
-import getTaskRunner from '../task-runner';
+import getTaskRunner from '../';
 
 
 /**
@@ -11,7 +11,9 @@ import getTaskRunner from '../task-runner';
 describe('TaskRunner', () => {
   it('runs a tasks list', async () => {
     const taskRunner = await getTaskRunner(undefined, undefined, 'silent');
-    taskRunner._tasks.forEach(task => expect(task.task()).toBeInstanceOf(TaskList));
+    taskRunner._tasks.forEach(task =>
+      expect(task.task()).toBeInstanceOf(TaskList),
+    );
     expect(taskRunner).toBeInstanceOf(TaskList);
   });
 

@@ -10,7 +10,6 @@ import { execObservable } from '../utils';
  */
 describe('execObservable()', () => {
   it('returns an Observable', async () => {
-    const result = execObservable();
-    expect(result).toBeInstanceOf(Observable);
+    expect(execObservable()).toBeInstanceOf(Observable);
   });
 });

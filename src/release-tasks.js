@@ -34,7 +34,9 @@ export default function getReleaseTasks(props = {}) {
       skip: () => !changelogPresetConfig,
       task: async () => {
         const changelogPath = path.join(path.dirname(pkgPath), 'CHANGELOG.md');
-        await exec('conventional-changelog', ['--infile', changelogPath, '--same-file', '--preset', options.changelogPreset, '--release-count', 0]);
+        await exec('conventional-changelog', [
+          '--infile', changelogPath, '--same-file', '--preset', options.changelogPreset, '--release-count', 0,
+        ]);
         await exec('git', ['add', changelogPath]);
       },
     },

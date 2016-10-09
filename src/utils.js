@@ -17,6 +17,6 @@ export function execObservable(cmd, args) {
 
   return Observable.merge(
     streamToObservable(childProcess.stdout.pipe(split()), { await: childProcess }),
-    streamToObservable(childProcess.stderr.pipe(split()), { await: childProcess })
+    streamToObservable(childProcess.stderr.pipe(split()), { await: childProcess }),
   ).filter(Boolean);
 }
