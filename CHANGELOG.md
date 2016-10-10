@@ -1,3 +1,9 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/simondegraeve/terbit/compare/v1.0.4...v1.0.5)
+> 2016-10-10
+
+* [cfe510f](https://github.com/simondegraeve/terbit/commit/cfe510f) **Tweak:** Cleanup and update dependencies
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/simondegraeve/terbit/compare/v1.0.3...v1.0.4)
 > 2016-10-09
