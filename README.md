@@ -1,23 +1,21 @@
 # terbit
-A better `npm publish`, inspired by [np](https://github.com/sindresorhus/np)
+> A better `npm publish`, inspired by [np](https://github.com/sindresorhus/np)
 
 [![NPM Version][npm-img]][npm-link]
 [![Licence][licence-img]][licence-link]
 [![Build Status][travis-img]][travis-link]
 [![Coverage Status][codecov-img]][codecov-link]
-[![Dependency Status][david-img]][david-link]
+[![Dependency Status][gemnasium-img]][gemnasium-link]
 
 
-## Installation
-
-Using [npm](https://www.npmjs.com):
+## Install
 
 ```
-npm install terbit
+$ npm install --global terbit
 ```
 
 
-## Documentation
+## Usage
 
 ```
 $ terbit --help
@@ -54,5 +52,5 @@ $ terbit --help
 [codecov-img]: https://img.shields.io/codecov/c/github/SimonDegraeve/terbit/master.svg?style=flat-square
 [codecov-link]: https://codecov.io/github/SimonDegraeve/terbit?branch=master
 
-[david-img]: https://img.shields.io/david/SimonDegraeve/terbit.svg?style=flat-square
-[david-link]: https://david-dm.org/SimonDegraeve/terbit
+[gemnasium-img]: https://img.shields.io/gemnasium/SimonDegraeve/terbit.svg?style=flat-square
+[gemnasium-link]: https://gemnasium.com/github.com/SimonDegraeve/terbit
