@@ -1,30 +1,10 @@
-<a name="1.0.6"></a>
-## [1.0.6](https://github.com/simondegraeve/terbit/compare/v1.0.5...v1.0.6)
-> 2016-10-11
-
-* [94fc6c4](https://github.com/simondegraeve/terbit/commit/94fc6c4) **Tweak:** Update dependencies
-
-<a name="1.0.5"></a>
-## [1.0.5](https://github.com/simondegraeve/terbit/compare/v1.0.4...v1.0.5)
-> 2016-10-10
-
-* [cfe510f](https://github.com/simondegraeve/terbit/commit/cfe510f) **Tweak:** Cleanup and update dependencies
-
-<a name="1.0.4"></a>
-## [1.0.4](https://github.com/simondegraeve/terbit/compare/v1.0.3...v1.0.4)
-> 2016-10-09
-
-* [98ef910](https://github.com/simondegraeve/terbit/commit/98ef910) **Dependency:** Update kode
-
-<a name="1.0.3"></a>
-## [1.0.3](https://github.com/simondegraeve/terbit/compare/v1.0.2...v1.0.3)
-> 2016-10-09
-
-* [3b9de5d](https://github.com/simondegraeve/terbit/commit/3b9de5d) **Dependency:** Change runtime-nodent to nodent-runtime
-
-<a name="1.0.2"></a>
-## [1.0.2](https://github.com/simondegraeve/terbit/compare/v1.0.1...v1.0.2)
-> 2016-10-08
+<a name="1.0.7"></a>
+## 1.0.7
+> 2016-10-12
 
 * [8e14e38](https://github.com/simondegraeve/terbit/commit/8e14e38) **Bugfix:** Force arguments to be parsed as boolean
+* [3b9de5d](https://github.com/simondegraeve/terbit/commit/3b9de5d) **Dependency:** Change runtime-nodent to nodent-runtime
+* [98ef910](https://github.com/simondegraeve/terbit/commit/98ef910) **Dependency:** Update kode
+* [cfe510f](https://github.com/simondegraeve/terbit/commit/cfe510f) **Tweak:** Cleanup and update dependencies
+* [94fc6c4](https://github.com/simondegraeve/terbit/commit/94fc6c4) **Tweak:** Update dependencies
 
