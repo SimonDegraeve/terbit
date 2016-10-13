@@ -1,3 +1,9 @@
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/simondegraeve/terbit/compare/v1.0.8...v1.0.9)
+> 2016-10-13
+
+* [04a4f0d](https://github.com/simondegraeve/terbit/commit/04a4f0d) **Bugfix:** Re-publish with tag
+
 <a name="1.0.8"></a>
 ## [1.0.8](https://github.com/simondegraeve/terbit/compare/v1.0.7...v1.0.8)
 > 2016-10-13

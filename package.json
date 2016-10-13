@@ -1,14 +1,24 @@
 {
   "name": "terbit",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A better `npm publish`",
   "license": "MIT",
-  "author": "Simon Degrave <simon.degraeve@gmail.com>",
-  "repository": "github:SimonDegraeve/terbit",
+  "author": {
+    "name": "Simon Degrave",
+    "email": "simon.degraeve@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simondegraeve/terbit.git"
+  },
   "homepage": "https://github.com/SimonDegraeve/terbit#readme",
-  "bugs": "https://github.com/SimonDegraeve/terbit/issues",
+  "bugs": {
+    "url": "https://github.com/SimonDegraeve/terbit/issues"
+  },
   "main": "lib/index.js",
-  "bin": "lib/cli.js",
+  "bin": {
+    "terbit": "lib/cli.js"
+  },
   "files": [
     "lib"
   ],
@@ -61,5 +71,7 @@
   "jest": {
     "preset": "jest-preset-saya",
     "testEnvironment": "jsdom"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "terbit@1.0.8"
 }
