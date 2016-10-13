@@ -30,7 +30,9 @@ const cli = createCli(`
     $ np patch
     $ np 1.0.2
     $ np 1.0.2-beta.3 --tag=beta
-`, { boolean: ['any-branch', 'skip-cleanup', 'skip-test'] });
+`, {
+  boolean: ['any-branch', 'skip-cleanup', 'skip-test'],
+});
 
 
 /**
@@ -44,7 +46,7 @@ async function runProgram() {
     console.log(`\n ${pkg.name} ${pkg.version} published`);
   }
   catch (error) {
-    console.log(`\nError: ${error.message}`);
+    console.log(`\n${error.message}`);
     process.exit(1);
   }
 }
