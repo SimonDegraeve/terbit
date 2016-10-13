@@ -4,6 +4,7 @@
 import path from 'path';
 import exec from 'execa';
 import writePkg from 'write-pkg';
+import readPkgUp from 'read-pkg-up';
 import { execObservable } from './utils';
 
 
@@ -29,7 +30,8 @@ export default function getReleaseTasks(props = {}) {
     {
       title: 'Bumping version',
       task: async () => {
-        await writePkg(pkgPath, { ...pkg, version: releaseVersion });
+        const { pkg: originalPkg } = await readPkgUp({ normalize: false });
+        await writePkg(pkgPath, { ...originalPkg, version: releaseVersion });
         await exec('git', ['add', pkgPath]);
       },
     },
