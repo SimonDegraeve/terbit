@@ -9,7 +9,6 @@ branches:
   only:
     - master
 node_js:
-  - '4'
   - 'node'
 before_script:
   - npm prune
@@ -17,7 +16,4 @@ script:
   - npm run lint
   - npm run test
 after_success:
-  - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
-  - python travis_after_all.py
-  - export $(cat .to_export_back) &> /dev/null
   - npm run report-coverage
