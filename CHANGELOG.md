@@ -1,3 +1,15 @@
+<a name="1.0.11"></a>
+## [1.0.11](https://github.com/simondegraeve/terbit/compare/v1.0.10...v1.0.11)
+> 2016-10-13
+
+* [00d3c3f](https://github.com/simondegraeve/terbit/commit/00d3c3f) **Bugfix:** Re-publish with changelog
+
+<a name="1.0.10"></a>
+## [1.0.10](https://github.com/simondegraeve/terbit/compare/v1.0.9...v1.0.10)
+> 2016-10-13
+
+* [c32c461](https://github.com/simondegraeve/terbit/commit/c32c461) **Bugfix:** Do not overwrite package.json with normalized data
+
 <a name="1.0.9"></a>
 ## [1.0.9](https://github.com/simondegraeve/terbit/compare/v1.0.8...v1.0.9)
 > 2016-10-13
