@@ -53,7 +53,7 @@ async function getReleaseVersion(input, currentVersion, changelogPresetConfig) {
  *
  */
 async function getProps(input, options) {
-  const { pkg, path: pkgPath } = await readPkgUp({ normalize: false });
+  const { pkg, path: pkgPath } = await readPkgUp();
 
   let changelogPresetConfig;
   if (options.changelogPreset) {

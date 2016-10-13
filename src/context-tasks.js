@@ -1,6 +1,7 @@
 /**
  *
  */
+import url from 'url';
 import exec from 'execa';
 import semver from 'semver';
 import { RELEASE_TYPES } from './constants';
@@ -30,9 +31,42 @@ export default function getContextTasks(props = {}) {
       },
     },
     {
+      title: 'Checking git repository',
+      task: async () => {
+        try {
+          await exec('git', ['rev-parse', 'HEAD']);
+        }
+        catch (error) {
+          if (error.message.match(/Not a git repository/)) {
+            throw new Error('Not a git repository. Run `git init`.');
+          }
+          if (error.message.match(/ambiguous argument/)) {
+            throw new Error('Empty repository. Commit changes first.');
+          }
+          throw error;
+        }
+      },
+    },
+    {
       title: 'Checking git tag existence',
       task: async () => {
-        await exec('git', ['fetch']);
+        try {
+          await exec('git', ['fetch']);
+        }
+        catch (error) {
+          if (error.message.match(/No remote repository specified/)) {
+            let upstreamUrl = (pkg.repository && pkg.repository.url) || false;
+
+            if (upstreamUrl) {
+              upstreamUrl = url.format({ ...url.parse(upstreamUrl), protocol: 'https' });
+              throw new Error(`No remote repository configured. Run \`git remote add origin ${upstreamUrl}; git push -u origin master\``);
+            }
+
+            throw new Error('No remote repository configured.');
+          }
+
+          throw error;
+        }
 
         let hasTag = false;
         try {

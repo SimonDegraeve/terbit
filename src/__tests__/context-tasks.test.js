@@ -45,10 +45,92 @@ describe('TaskRunner', () => {
     }
   });
 
+  it('throws with unknown error', async () => {
+    exec.__setMockResults([
+      ['', '', 1], // git rev-parse HEAD
+    ]);
+
+    try {
+      await runTasks({ pkg: { version: '1.0.0' }, releaseVersion: '2.0.0' });
+    }
+    catch (error) {
+      expect(error.message).toMatch(/Command failed: git rev-parse HEAD/);
+    }
+  });
+
+  it('throws if repository does not exist', async () => {
+    exec.__setMockResults([
+      ['', 'Not a git repository', 1], // git rev-parse HEAD
+    ]);
+
+    try {
+      await runTasks({ pkg: { version: '1.0.0' }, releaseVersion: '2.0.0' });
+    }
+    catch (error) {
+      expect(error.message).toMatch(/Not a git repository/);
+    }
+  });
+
+  it('throws if repository is empty', async () => {
+    exec.__setMockResults([
+      ['', 'ambiguous argument \'HEAD\'', 1], // git rev-parse HEAD
+    ]);
+
+    try {
+      await runTasks({ pkg: { version: '1.0.0' }, releaseVersion: '2.0.0' });
+    }
+    catch (error) {
+      expect(error.message).toMatch(/Empty repository/);
+    }
+  });
+
+  it('throws when no remote configured', async () => {
+    exec.__setMockResults([
+      '', // git rev-parse HEAD
+      ['', 'No remote repository specified', 1], // git fetch
+    ]);
+
+    try {
+      await runTasks({ pkg: { version: '1.0.0' }, releaseVersion: '2.0.0' });
+    }
+    catch (error) {
+      expect(error.message).toBe('No remote repository configured.');
+    }
+  });
+
+  it('throws when no remote configured and displays help', async () => {
+    exec.__setMockResults([
+      '', // git rev-parse HEAD
+      ['', 'No remote repository specified', 1], // git fetch
+    ]);
+
+    try {
+      await runTasks({ pkg: { version: '1.0.0', repository: { url: 'http://github.com/user/repo.git' } }, releaseVersion: '2.0.0' });
+    }
+    catch (error) {
+      expect(error.message).toMatch(/git remote add origin https:\/\/github.com\/user\/repo.git/);
+    }
+  });
+
+  it('throws when git fetch fails', async () => {
+    exec.__setMockResults([
+      '', // git rev-parse HEAD
+      ['', 'Some error', 1], // git fetch
+    ]);
+
+    try {
+      await runTasks({ pkg: { version: '1.0.0' }, releaseVersion: '2.0.0' });
+    }
+    catch (error) {
+      expect(error.message).toMatch(/Some error/);
+    }
+  });
+
   it('checks git tag existence', async () => {
     exec.__setMockResults([
+      '', // git rev-parse HEAD
       '', // git fetch
-      'cf23df2207d99a74fbe169e3eba035e633b65d94', // git rev-parse
+      'cf23df2207d99a74fbe169e3eba035e633b65d94', // git rev-parse tags
     ]);
 
     try {
@@ -70,8 +152,9 @@ describe('TaskRunner', () => {
 
   it('checks local working tree', async () => {
     exec.__setMockResults([
+      '', // git rev-parse HEAD
       '', // git fetch
-      '', // git rev-parse
+      '', // git rev-parse tags
       'master', // git symbolic-ref
       'unclean', // git status
     ]);
@@ -86,8 +169,9 @@ describe('TaskRunner', () => {
 
   it('checks remote history', async () => {
     exec.__setMockResults([
+      '', // git rev-parse HEAD
       '', // git fetch
-      '', // git rev-parse
+      '', // git rev-parse tags
       'master', // git symbolic-ref
       '', // git status
       '1', // git rev-list
@@ -103,8 +187,9 @@ describe('TaskRunner', () => {
 
   it('runs all tasks', async () => {
     exec.__setMockResults([
+      '', // git rev-parse HEAD
       '', // git fetch
-      '', // git rev-parse
+      '', // git rev-parse tags
       'master', // git symbolic-ref
       '', // git status
       '0', // git rev-list
