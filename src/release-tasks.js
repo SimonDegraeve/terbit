@@ -13,6 +13,10 @@ import { execObservable } from './utils';
 export default function getReleaseTasks(props = {}) {
   const { pkg = {}, options = {}, releaseVersion, pkgPath, changelogPresetConfig } = props;
   const skipBuild = !pkg.scripts || !pkg.scripts.build;
+  let commitMessage = releaseVersion;
+  if (changelogPresetConfig && changelogPresetConfig.releaseCommitMessage) {
+    commitMessage = changelogPresetConfig.releaseCommitMessage.replace('%s', releaseVersion);
+  }
 
   return [
     {
@@ -43,12 +47,8 @@ export default function getReleaseTasks(props = {}) {
     {
       title: 'Committing release',
       task: async () => {
-        let message = releaseVersion;
-        if (changelogPresetConfig && changelogPresetConfig.releaseCommitMessage) {
-          message = changelogPresetConfig.releaseCommitMessage.replace('%s', releaseVersion);
-        }
-        await exec('git', ['commit', '--message', message]);
-        await exec('git', ['tag', `v${releaseVersion}`]);
+        await exec('git', ['commit', '--message', commitMessage]);
+        await exec('git', ['tag', '--annotate', '--message', commitMessage, `v${releaseVersion}`]);
       },
     },
     {
